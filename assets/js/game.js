@@ -3,6 +3,20 @@ let game = {
   firstCard: null,
   secondCard: null,
 
+  techs: [
+    "bootstrap",
+    "electron",
+    "firebase",
+    "html",
+    "javascript",
+    "jquery",
+    "mongo",
+    "node",
+    "react",
+    "css",
+  ],
+  cards: null,
+
   setCard: function (id) {
     let card = this.cards.filter((card) => card.id === id)[0];
     if (card.flipped || this.lockMode) {
@@ -38,19 +52,9 @@ let game = {
     this.clearCards();
   },
 
-  techs: [
-    "bootstrap",
-    "electron",
-    "firebase",
-    "html",
-    "javascript",
-    "jquery",
-    "mongo",
-    "node",
-    "react",
-    "css",
-  ],
-  cards: null,
+  checkGameOver() {
+    return this.cards.filter((card) => !card.flipped).length == 0;
+  },
 
   createCardsFromTechs: function () {
     this.cards = [];
